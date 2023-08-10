@@ -43,14 +43,14 @@ class GenshinCrawlerOfficial:
                 print(f"{key}：{value}")
 
     def _get_char_data(self):
-        data = {}
+        chars_dict = {}
         for url in self.char_urls:
             req = self.req(url)
             js = req.json()['data']
             jslist = self.char_data(js)
             for json in jslist:
-                data[json['角色名字']] = json
-        return data
+                chars_dict[json['角色名字']] = json
+        return chars_dict
 
     def char_data(self, js):
         _return_ = []
